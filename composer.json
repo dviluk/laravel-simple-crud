@@ -1,0 +1,43 @@
+{
+  "name": "dviluk/laravel-simple-crud",
+  "version": "1",
+  "description": "simple crud",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "dviluk",
+      "email": "dviluk@outlook.jp",
+      "homepage": "https://dviluk.com"
+    }
+  ],
+  "homepage": "https://github.com/dviluk/laravel-simple-crud",
+  "keywords": [
+    "Laravel",
+    "LaravelSimpleCrud"
+  ],
+  "require": {
+    "dompdf/dompdf": "^1.2",
+    "maatwebsite/excel": "^3.1"
+  },
+  "require-dev": {},
+  "autoload": {
+    "psr-4": {
+      "Dviluk\\LaravelSimpleCrud\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Dviluk\\LaravelSimpleCrud\\Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Dviluk\\LaravelSimpleCrud\\LaravelSimpleCrudServiceProvider"
+      ],
+      "aliases": {
+        "LaravelSimpleCrud": "Dviluk\\LaravelSimpleCrud\\Facades\\LaravelSimpleCrud"
+      }
+    }
+  }
+}
