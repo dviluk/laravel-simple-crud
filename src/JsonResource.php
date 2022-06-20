@@ -225,4 +225,35 @@ class JsonResource implements Responsable
     {
         return $this->toJsonResponse();
     }
+    
+    /**
+     * Get resource name from model if exists.
+     * 
+     * @return mixed 
+     */
+    public function getResourceName()
+    {
+        $resource = $this->resource;
+        if ($resource instanceof Collection) {
+            $resource = $resource->first();
+            return $this->extractResourceName($resource);
+        } else if (is_array($resource)) {
+            return $this->extractResourceName($resource[array_key_first($resource)]);
+        }
+
+        return $this->extractResourceName($resource);
+    }
+
+    /**
+     * Validate if getResourceName() exists in model.
+     * 
+     * @param mixed $resource 
+     * @return mixed 
+     */
+    public function extractResourceName($resource)
+    {
+        return method_exists($resource, 'getResourceName')
+            ? $resource->getResourceName()
+            : 'No resource name';
+    }
 }
