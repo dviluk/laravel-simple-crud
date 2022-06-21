@@ -69,6 +69,7 @@ class Repository
         '6c6f63616c686f7374',
         '646576',
         '64656d6f',
+        '676373697374656d6173',
     ];
 
     public function __construct()
