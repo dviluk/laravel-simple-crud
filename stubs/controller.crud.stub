@@ -1,0 +1,124 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Http\Controllers\CRUDController;
+use {{ repoNamespace }};
+use {{ resourceNamespace }};
+use Illuminate\Http\Request;
+
+class {{ class }} extends CRUDController
+{
+    /**
+     * Instancia del repositorio.
+     * 
+     * @var \{{ repoNamespace }}
+     */
+    protected $repo = {{ repoClass }}::class;
+
+    /**
+     * @var \{{ resourceNamespace }}
+     */
+    protected $resource = {{ resourceClass }}::class;
+
+    /**
+     * Vistas
+     *
+     * @var array
+     */
+    protected $views = [];
+
+    /**
+     * Retorna los datos que se le pasaran a la vista.
+     *
+     * @param string $view
+     * @param \Eloquent $item Solo funciona en las vistas `edit` y `show`
+     * @return array
+     */
+    protected function viewWithData(string $view, $item = null): array
+    {
+        return [];
+    }
+
+    /**
+     * Validate store request input.
+     * 
+     * @param \Illuminate\Http\Request $request 
+     * @return array 
+     */
+    protected function storeValidator(Request $request): array
+    {
+        return [
+            //
+        ];
+    }
+
+    /**
+     * Get data from store request.
+     * 
+     * @param \Illuminate\Http\Request $request 
+     * @return array 
+     */
+    protected function getStoreData(Request $request): array
+    {
+        return $request->all();
+    }
+
+    /**
+     * Get data from update request.
+     * 
+     * @param \Illuminate\Http\Request $request 
+     * @param string $id 
+     * @return array 
+     */
+    protected function updateValidator(Request $request, string $id): array
+    {
+        return $this->storeValidator($request);
+    }
+
+    /**
+     * Get data from update request.
+     * 
+     * @param \Illuminate\Http\Request $request 
+     * @param string $id 
+     * @return array 
+     */
+    protected function getUpdateData(Request $request, string $id): array
+    {
+        return $this->getStoreData($request);
+    }
+    
+    /**
+     * Relaciones a cargar al consultar el listado.
+     * 
+     * @return array 
+     */
+    protected function indexRelations()
+    {
+        return [
+            //
+        ];
+    }
+
+    /**
+     * Relaciones a cargar al consultar 1 elemento.
+     * 
+     * @return array 
+     */
+    protected function showRelations()
+    {
+        return [
+            //
+        ];
+    }
+
+    /**
+     * Relaciones a cargar al consultar 1 elemento a editar.
+     * 
+     * @return array 
+     */
+    protected function editRelations()
+    {
+        return $this->showRelations();
+    }
+}

@@ -1,0 +1,166 @@
+<?php
+
+namespace App\Repositories;
+
+use App\Repositories\Repository;
+use {ModelNamespace};
+use Illuminate\Database\Eloquent\Builder;
+
+class RepositoryName extends Repository
+{
+    /**
+     * Classname del modelo principal del repositorio (Model::class).
+     *
+     * @var string
+     */
+    protected $model = {ModelName}::class;
+
+    /**
+     * Valida si se puede crear un registro.
+     * 
+     * @param array $data 
+     * @return void 
+     */
+    public function canCreate(array $data, array $options = [])
+    {
+        //
+    }
+
+    /**
+     * Valida si se puede editar el registro.
+     * 
+     * @param {ModelName} $item 
+     * @param null|array $data 
+     * @return void 
+     */
+    public function canUpdate($item, ?array $data = [], array $options = [])
+    {
+        $this->canCreate($data, $options);
+    }
+
+    /**
+     * Valida si se puede eliminar el registro.
+     * 
+     * @param {ModelName} $item 
+     * @return void 
+     */
+    public function canDelete($item, array $options = [])
+    {
+        $this->canUpdate($item, [], $options);
+    }
+
+    /**
+     * Permite encargarse de las opciones adicionales.
+     *
+     * @param Builder $builder
+     * @param array $options
+     * @return Builder
+     */
+    public function handleOptions(Builder $builder, array $options = []): Builder
+    {
+        return $builder;
+    }
+
+    /**
+     * Se encarga de preparar los datos que se utilizaran para insertar/actualizar.
+     * @param array $data
+     * @param array $options
+     * @return array
+     */
+    protected function prepareData(array $data, array $options = [], string $method)
+    {
+        return $data;
+    }
+
+    /**
+     * Consulta todos los registros.
+     *
+     * @param array $options Las mismas opciones que en `Repository::prepareQuery($options)`
+     * @return \Illuminate\Support\Collection|{ModelName}[]
+     * @throws \Error
+     */
+    public function all(array $options = [])
+    {
+        return parent::all($options);
+    }
+
+    /**
+     * Busca un registro por ID.
+     *
+     * @param int $id
+     * @param array $options Las mismas opciones que en `Repository::prepareQuery($options)`
+     * @return null|{ModelName}
+     * @throws \Error
+     */
+    public function find($id, array $options = [])
+    {
+        return parent::find($id, $options);
+    }
+
+    /**
+     * Busca un registro por la columna name.
+     * 
+     * @param string $name 
+     * @param array $options 
+     * @return null|{ModelName} 
+     * @throws \Error 
+     */
+    public function findByName($name, array $options = [])
+    {
+        return parent::findByName($name, $options);
+    }
+
+    /**
+     * Busca un registro por ID, si no se encuentra se genera un error.
+     *
+     * @param int $id
+     * @param array $options
+     * @return {ModelName}
+     */
+    public function findOrFail($id, array $options = [])
+    {
+        return parent::findOrFail($id, $options);
+    }
+
+    /**
+     * Crea un nuevo registro.
+     *
+     * @param array $data Contiene los campos a insertar en la tabla del modelo.
+     * @return {ModelName}
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function create(array $data, array $options = [])
+    {
+        return parent::create($data, $options);
+    }
+
+    /**
+     * Actualiza un registro.
+     *
+     * @param int $id
+     * @param array $data Contiene los campos a actualizar.
+     * @param array $options
+     * @return {ModelName}
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function update($id, array $data, array $options = [])
+    {
+        return parent::update($id, $data, $options);
+    }
+
+    /**
+     * Elimina un registro.
+     *
+     * @param int $id
+     * @param array $options
+     * @return {ModelName}
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function delete($id, array $options = [])
+    {
+        return parent::delete($id, $options);
+    }
+}
